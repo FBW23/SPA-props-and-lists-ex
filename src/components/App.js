@@ -1,15 +1,15 @@
 import React from 'react';
-import books from '../data/books/books.js';
-import BookCategory from './BookCategory';
+import albums from '../data/gorillaz/gorillaz.js';
+import Album from './Album';
 
 class App extends React.Component {
   render() {
-    let bookCategories = books.results.lists;
-    let bookCategoriesList = bookCategories.map((el) => {
-      return <BookCategory key={el.list_id} data={el}></BookCategory>;
+    let gorillazAlbums = albums.results.albummatches.album;
+    let albumsList = gorillazAlbums.map((el) => {
+      if (el.image[2]['#text']) return <Album key={el.url} data={el}></Album>;
     });
 
-    return <div className="app">{bookCategoriesList}</div>;
+    return <div className="app">{albumsList}</div>;
   }
 }
 
